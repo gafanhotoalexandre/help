@@ -1,67 +1,87 @@
-<script setup>
-import BreezeButton from '@/Components/Button.vue';
-import BreezeCheckbox from '@/Components/Checkbox.vue';
-import BreezeGuestLayout from '@/Layouts/Guest.vue';
-import BreezeInput from '@/Components/Input.vue';
-import BreezeLabel from '@/Components/Label.vue';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-
-defineProps({
-    canResetPassword: Boolean,
-    status: String,
-});
-
-const form = useForm({
-    email: '',
-    password: '',
-    remember: false
-});
-
-const submit = () => {
-    form.post(route('login'), {
-        onFinish: () => form.reset('password'),
-    });
-};
-</script>
-
 <template>
-    <BreezeGuestLayout>
-        <Head title="Log in" />
-
-        <BreezeValidationErrors class="mb-4" />
+    <GuestLayout title="Log in">
+        <ValidationErrors class="mb-4" />
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
 
         <form @submit.prevent="submit">
-            <div>
-                <BreezeLabel for="email" value="Email" />
-                <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
-            </div>
+            <div class="grid gap-6">
+                <div class="space-y-2">
+                    <Label for="email" value="Email" />
+                    <InputIconWrapper>
+                        <template #icon>
+                            <MailIcon aria-hidden="true" class="w-5 h-5" />
+                        </template>
+                        <Input withIcon id="email" type="email" class="block w-full" placeholder="Email" v-model="form.email" required autofocus autocomplete="username" />
+                    </InputIconWrapper>
+                </div>
 
-            <div class="mt-4">
-                <BreezeLabel for="password" value="Senha" />
-                <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
-            </div>
+                <div class="space-y-2">
+                    <Label for="password" value="Password" />
+                    <InputIconWrapper>
+                        <template #icon>
+                            <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
+                        </template>
+                        <Input withIcon id="password" type="password" class="block w-full" placeholder="Password" v-model="form.password" required autocomplete="current-password" />
+                    </InputIconWrapper>
+                </div>
 
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <BreezeCheckbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Manter-me conectado</span>
-                </label>
-            </div>
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                        <Checkbox name="remember" v-model:checked="form.remember" />
+                        <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    </label>
 
-            <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Esqueceu sua senha?
-                </Link>
+                    <Link v-if="canResetPassword" :href="route('password.request')" class="text-sm text-blue-500 hover:underline">
+                        Forgot your password?
+                    </Link>
+                </div>
 
-                <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Entrar
-                </BreezeButton>
+                <div>
+                    <Button class="justify-center gap-2 w-full" :disabled="form.processing" v-slot="{iconSizeClasses}">
+                        <LoginIcon aria-hidden="true" :class="iconSizeClasses" />
+                        <span>Log in</span>
+                    </Button>
+                </div>
+
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Don't have an account?
+                    <Link :href="route('register')" class="text-blue-500 hover:underline">
+                        Register
+                    </Link>
+                </p>
             </div>
         </form>
-    </BreezeGuestLayout>
+    </GuestLayout>
 </template>
+
+<script setup>
+import { Link, useForm } from '@inertiajs/inertia-vue3'
+import { MailIcon, LockClosedIcon, LoginIcon } from '@heroicons/vue/outline'
+import InputIconWrapper from '@/Components/InputIconWrapper'
+import Button from '@/Components/Button'
+import Checkbox from '@/Components/Checkbox'
+import GuestLayout from '@/Layouts/Guest'
+import Input from '@/Components/Input'
+import Label from '@/Components/Label'
+import ValidationErrors from '@/Components/ValidationErrors'
+
+defineProps({
+    canResetPassword: Boolean,
+    status: String,
+})
+
+const form = useForm({
+    email: '',
+    password: '',
+    remember: false
+})
+
+const submit = () => {
+    form.post(route('login'), {
+        onFinish: () => form.reset('password'),
+    })
+}
+</script>

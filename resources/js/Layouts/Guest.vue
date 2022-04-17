@@ -1,18 +1,59 @@
-<script setup>
-import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
-import { Link } from '@inertiajs/inertia-vue3';
-</script>
-
 <template>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-        <div>
+    <Head :title="title" />
+    
+    <div
+        class="flex flex-col items-center justify-center min-h-screen gap-4 py-6 bg-gray-100  dark:bg-dark-bg"
+    >
+        <div class="flex-shrink-0">
             <Link href="/">
-                <BreezeApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
+                <ApplicationLogo class="w-20 h-20" />
             </Link>
         </div>
 
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-            <slot />
+        <main class="flex items-center flex-1 w-full sm:max-w-md">
+            <div
+                class="w-full px-6 py-4 overflow-hidden bg-white shadow-md  sm:rounded-lg dark:bg-dark-eval-1"
+            >
+                <slot />
+            </div>
+        </main>
+
+        <PageFooter />
+
+        <div class="fixed right-10 top-10">
+            <Button
+                iconOnly
+                variant="secondary"
+                type="button"
+                @click="toggleDarkMode"
+                v-slot="{ iconSizeClasses }"
+                class="hidden md:inline-flex"
+                srText="Toggle dark mode"
+            >
+                <MoonIcon
+                    v-show="!isDark"
+                    aria-hidden="true"
+                    :class="iconSizeClasses"
+                />
+                <SunIcon
+                    v-show="isDark"
+                    aria-hidden="true"
+                    :class="iconSizeClasses"
+                />
+            </Button>
         </div>
     </div>
 </template>
+
+<script setup>
+import { Head, Link } from '@inertiajs/inertia-vue3'
+import { MoonIcon, SunIcon } from '@heroicons/vue/outline'
+import ApplicationLogo from '@/Components/ApplicationLogo'
+import PageFooter from '@/Components/PageFooter'
+import Button from '@/Components/Button'
+import { toggleDarkMode, isDark } from '@/Composables'
+
+defineProps({
+    title: String
+})
+</script>

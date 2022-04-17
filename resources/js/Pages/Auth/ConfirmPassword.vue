@@ -1,43 +1,50 @@
+<template>
+    <GuestLayout title="Confirm Password">
+        <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
+            This is a secure area of the application. Please confirm your password before continuing.
+        </div>
+
+        <ValidationErrors class="mb-4" />
+
+        <form @submit.prevent="submit">
+            <div class="grid gap-4">
+                <div class="space-y-2">
+                    <Label for="password" value="Password" />
+                    <InputIconWrapper>
+                        <template #icon>
+                            <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
+                        </template>
+                        <Input withIcon id="password" type="password" class="block w-full" placeholder="Password" v-model="form.password" required autocomplete="current-password" autofocus />
+                    </InputIconWrapper>
+                </div>
+
+                <div>
+                    <Button class="w-full justify-center" :disabled="form.processing">
+                        Confirm
+                    </Button>
+                </div>
+            </div>
+        </form>
+    </GuestLayout>
+</template>
+
 <script setup>
-import BreezeButton from '@/Components/Button.vue';
-import BreezeGuestLayout from '@/Layouts/Guest.vue';
-import BreezeInput from '@/Components/Input.vue';
-import BreezeLabel from '@/Components/Label.vue';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import { Head, useForm } from '@inertiajs/inertia-vue3';
+import { useForm } from '@inertiajs/inertia-vue3';
+import { LockClosedIcon } from '@heroicons/vue/outline';
+import InputIconWrapper from '@/Components/InputIconWrapper'
+import Button from '@/Components/Button'
+import GuestLayout from '@/Layouts/Guest'
+import Input from '@/Components/Input'
+import Label from '@/Components/Label'
+import ValidationErrors from '@/Components/ValidationErrors'
 
 const form = useForm({
-    password: '',
-});
+    password: ''
+})
 
 const submit = () => {
     form.post(route('password.confirm'), {
         onFinish: () => form.reset(),
     })
-};
+}
 </script>
-
-<template>
-    <BreezeGuestLayout>
-        <Head title="Confirm Password" />
-
-        <div class="mb-4 text-sm text-gray-600">
-            This is a secure area of the application. Please confirm your password before continuing.
-        </div>
-
-        <BreezeValidationErrors class="mb-4" />
-
-        <form @submit.prevent="submit">
-            <div>
-                <BreezeLabel for="password" value="Password" />
-                <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" autofocus />
-            </div>
-
-            <div class="flex justify-end mt-4">
-                <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Confirm
-                </BreezeButton>
-            </div>
-        </form>
-    </BreezeGuestLayout>
-</template>

@@ -1,26 +1,26 @@
-<script setup>
-import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
-import { Head } from '@inertiajs/inertia-vue3';
-</script>
-
 <template>
-    <Head title="Dashboard" />
-
-    <BreezeAuthenticatedLayout>
+    <AuthenticatedLayout title="Dashboard">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
-            </h2>
+            <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <h2 class="text-xl font-semibold leading-tight">
+                    Dashboard
+                </h2>
+
+                <!--<Button external variant="black" target="_blank" class="items-center gap-2 max-w-xs" v-slot="{ iconSizeClasses }" href="https://github.com/kamona-wd/kui-laravel-breeze">
+                    <GithubIcon aria-hidden="true" :class="iconSizeClasses" />
+                    <span>Star on Github</span>
+                </Button>-->
+            </div>
         </template>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        Seja Bem-Vindo!
-                    </div>
-                </div>
-            </div>
+        <div class="p-6 overflow-hidden bg-white rounded-md shadow-md dark:bg-dark-eval-1">
+            You're logged in!
         </div>
-    </BreezeAuthenticatedLayout>
+    </AuthenticatedLayout>
 </template>
+
+<script setup>
+import AuthenticatedLayout from '@/Layouts/Authenticated'
+import Button from '@/Components/Button'
+import { GithubIcon } from '@/Components/Icons/brands'
+</script>
