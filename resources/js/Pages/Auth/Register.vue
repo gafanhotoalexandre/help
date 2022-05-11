@@ -5,7 +5,7 @@
         <form @submit.prevent="submit">
             <div class="grid gap-6">
                 <div class="space-y-2">
-                    <Label for="name" value="Name" />
+                    <Label for="name" value="Nome" />
                     <InputIconWrapper>
                         <template #icon>
                             <UserIcon aria-hidden="true" class="w-5 h-5" />
@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="space-y-2">
-                    <Label for="email" value="Email" />
+                    <Label for="email" value="E-mail" />
                     <InputIconWrapper>
                         <template #icon>
                             <MailIcon aria-hidden="true" class="w-5 h-5" />
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="space-y-2">
-                    <Label for="password" value="Password" />
+                    <Label for="password" value="Senha" />
                     <InputIconWrapper>
                         <template #icon>
                             <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="space-y-2">
-                    <Label for="password_confirmation" value="Confirm Password" />
+                    <Label for="password_confirmation" value="Confirme sua Senha" />
                     <InputIconWrapper>
                         <template #icon>
                             <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
@@ -47,12 +47,12 @@
                 <div>
                     <Button class="justify-center gap-2 w-full" :disabled="form.processing" v-slot="{ iconSizeClasses }">
                         <UserAddIcon aria-hidden="true" :class="iconSizeClasses" />
-                        <span>Register</span>
+                        <span>Cadastrar</span>
                     </Button>
                 </div>
 
                 <p class="text-sm text-gray-600 dark:text-gray-400">
-                    Already have an account?
+                    Já possui uma conta?
                     <Link :href="route('login')" class="text-blue-500 hover:underline">
                         Login
                     </Link>

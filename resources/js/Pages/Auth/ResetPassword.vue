@@ -5,7 +5,7 @@
         <form @submit.prevent="submit">
             <div class="grid gap-4">
                 <div class="space-y-2">
-                    <Label for="email" value="Email" />
+                    <Label for="email" value="E-mail" />
                     <InputIconWrapper>
                         <template #icon>
                             <MailIcon aria-hidden="true" class="w-5 h-5" />
@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="space-y-2">
-                    <Label for="password" value="Password" />
+                    <Label for="password" value="Senha" />
                     <InputIconWrapper>
                         <template #icon>
                             <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="space-y-2">
-                    <Label for="password_confirmation" value="Confirm Password" />
+                    <Label for="password_confirmation" value="Confirme sua Senha" />
                     <InputIconWrapper>
                         <template #icon>
                             <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
@@ -36,7 +36,7 @@
 
                 <div>
                     <Button class="w-full justify-center" :disabled="form.processing">
-                        Reset Password
+                        Resetar Senha
                     </Button>
                 </div>
             </div>
