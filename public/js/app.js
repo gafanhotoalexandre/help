@@ -21478,7 +21478,7 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "https://github.com/Kamona-WD",
+  href: "https://github.com/gafanhotoalexandre",
   target: "_blank",
   "class": "text-blue-600 hover:underline"
 }, " Alexandre Martins ", -1
@@ -22209,7 +22209,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             id: "password",
             type: "password",
             "class": "block w-full",
-            placeholder: "Password",
+            placeholder: "Senha",
             modelValue: $setup.form.password,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
               return $setup.form.password = $event;
@@ -22406,7 +22406,7 @@ var _hoisted_11 = {
   "class": "text-sm text-gray-600 dark:text-gray-400"
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Don't have an account? ");
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Você não tem uma conta? ");
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Register ");
 
@@ -22468,7 +22468,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             id: "password",
             type: "password",
             "class": "block w-full",
-            placeholder: "Password",
+            placeholder: "Senha",
             modelValue: $setup.form.password,
             "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
               return $setup.form.password = $event;

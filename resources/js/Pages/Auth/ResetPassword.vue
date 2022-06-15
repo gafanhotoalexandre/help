@@ -20,7 +20,7 @@
                         <template #icon>
                             <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
                         </template>
-                        <Input withIcon id="password" type="password" placeholder="Password" class="block w-full" v-model="form.password" required autocomplete="new-password" />
+                        <Input withIcon id="password" type="password" placeholder="Senha" class="block w-full" v-model="form.password" required autocomplete="new-password" />
                     </InputIconWrapper>
                 </div>
 
@@ -30,7 +30,7 @@
                         <template #icon>
                             <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
                         </template>
-                        <Input withIcon id="password_confirmation" type="password" placeholder="Confirm Password" class="block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
+                        <Input withIcon id="password_confirmation" type="password" placeholder="Confirmar Senha" class="block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
                     </InputIconWrapper>
                 </div>
 

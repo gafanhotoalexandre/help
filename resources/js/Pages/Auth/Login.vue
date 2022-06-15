@@ -24,7 +24,7 @@
                         <template #icon>
                             <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
                         </template>
-                        <Input withIcon id="password" type="password" class="block w-full" placeholder="Password" v-model="form.password" required autocomplete="current-password" />
+                        <Input withIcon id="password" type="password" class="block w-full" placeholder="Senha" v-model="form.password" required autocomplete="current-password" />
                     </InputIconWrapper>
                 </div>
 
@@ -47,9 +47,9 @@
                 </div>
 
                 <p class="text-sm text-gray-600 dark:text-gray-400">
-                    Don't have an account?
+                    Você não tem uma conta?
                     <Link :href="route('register')" class="text-blue-500 hover:underline">
-                        Register
+                        Registre-se
                     </Link>
                 </p>
             </div>

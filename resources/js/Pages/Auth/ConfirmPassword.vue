@@ -14,7 +14,7 @@
                         <template #icon>
                             <LockClosedIcon aria-hidden="true" class="w-5 h-5" />
                         </template>
-                        <Input withIcon id="password" type="password" class="block w-full" placeholder="Password" v-model="form.password" required autocomplete="current-password" autofocus />
+                        <Input withIcon id="password" type="password" class="block w-full" placeholder="Senha" v-model="form.password" required autocomplete="current-password" autofocus />
                     </InputIconWrapper>
                 </div>
 
