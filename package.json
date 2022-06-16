@@ -1,32 +1,24 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
-    },
-    "devDependencies": {
-        "@heroicons/vue": "^1.0.4",
-        "@inertiajs/inertia": "^0.11.0",
-        "@inertiajs/inertia-vue3": "^0.6.0",
-        "@inertiajs/progress": "^0.2.6",
-        "@tailwindcss/forms": "^0.5.0",
-        "@vue/babel-plugin-jsx": "^1.1.0",
-        "@vue/compiler-sfc": "^3.2.30",
-        "@vueuse/core": "^6.5.3",
-        "autoprefixer": "^10.4.2",
-        "axios": "^0.21",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "perfect-scrollbar": "^1.5.5",
-        "postcss": "^8.4.6",
-        "postcss-import": "^14.0.2",
-        "tailwindcss": "^3.0.18",
-        "vue": "^3.2.30",
-        "vue-loader": "^16.1.2"
-    }
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "12.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.0.0",
+    "@types/react": "18.0.14",
+    "@types/react-dom": "18.0.5",
+    "eslint": "8.17.0",
+    "eslint-config-next": "12.1.6",
+    "typescript": "4.7.3"
+  }
 }
