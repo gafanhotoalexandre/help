@@ -1,5 +1,6 @@
 // components
 import { Banner } from '../../components/Banner';
+import { ProductItem } from '../../components/ProductItem';
 import { SearchInput } from '../../components/SearchInput';
 
 import styles from '../../styles/Home.module.css';
@@ -38,9 +39,9 @@ export default function Home() {
       <Banner />
 
       <div className={styles.grid}>
-        <div>...</div>
-        <div>...</div>
-        <div>...</div>
+        <ProductItem />
+        <ProductItem />
+        <ProductItem />
       </div>
     </div>
   );
