@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-import styles from './SearchInput.module.css'
+import SearchIcon from './searchIcon.svg';
+import styles from './SearchInput.module.css';
 
 interface SearchInputProps {
   mainColor: string;
@@ -25,7 +26,9 @@ export function SearchInput({ mainColor, onSearch }: SearchInputProps) {
       <div
         className={styles.button}
         onClick={() => onSearch(searchValue)}
-      ></div>
+      >
+        <SearchIcon color={mainColor} />
+      </div>
 
       <input
         type="text"
