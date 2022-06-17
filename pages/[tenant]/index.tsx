@@ -2,10 +2,14 @@
 import { Banner } from '../../components/Banner';
 import { ProductItem } from '../../components/ProductItem';
 import { SearchInput } from '../../components/SearchInput';
+import { useApi } from '../../libs/useApi';
 
 import styles from '../../styles/Home.module.css';
 
 export default function Home() {
+  const api = useApi();
+  const tenant = api.getTenant('b7burger');
+
   function handleSearch(searchValue: string) {
     console.log('Você está buscando por...', searchValue);
   }
