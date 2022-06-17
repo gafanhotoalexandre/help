@@ -36,6 +36,12 @@ export default function Home() {
       </header>
 
       <Banner />
+
+      <div className={styles.grid}>
+        <div>...</div>
+        <div>...</div>
+        <div>...</div>
+      </div>
     </div>
   );
 }

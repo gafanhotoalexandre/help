@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper';
 
 // Swiper styles
 import 'swiper/css';
@@ -9,13 +10,25 @@ export function Banner() {
   return (
     <div className={styles.container}>
       <Swiper
-        spaceBetween={50}
         slidesPerView={1}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
+        className={styles.swiper}
+        autoplay={{
+          delay: 1500,
+          disableOnInteraction: false
+        }}
+        modules={[Autoplay]}
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
+        <SwiperSlide
+          className={styles.slide}
+        >
+          <img src={'/tmp/banner1.png'} alt="" />
+        </SwiperSlide>
+
+        <SwiperSlide
+          className={styles.slide}
+        >
+          <img src={'/tmp/banner2.png'} alt="" />
+        </SwiperSlide>
       </Swiper>
     </div>
   );
