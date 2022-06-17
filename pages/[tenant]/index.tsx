@@ -4,11 +4,23 @@ import { GetServerSideProps } from 'next';
 import { Banner } from '../../components/Banner';
 import { ProductItem } from '../../components/ProductItem';
 import { SearchInput } from '../../components/SearchInput';
-import { getTenantResponse, useApi } from '../../libs/useApi';
+import { useApi } from '../../libs/useApi';
+
+// types
+import { Tenant } from '../../types/Tenant';
+
+// contexts
+import { useAppContext } from '../../contexts/AppContext';
 
 import styles from '../../styles/Home.module.css';
+import { useEffect } from 'react';
 
 export default function Home(data: HomeProps) {
+  const { tenant, setTenant } = useAppContext();
+
+  useEffect(() => {
+    setTenant(data.tenant);
+  }, [data.tenant, setTenant]);
 
   function handleSearch(searchValue: string) {
     console.log('Você está buscando por...', searchValue);
@@ -27,17 +39,17 @@ export default function Home(data: HomeProps) {
             <div className={styles.menuButton}>
               <div
                 className={styles.menuButtonLine}
-                style={{ backgroundColor: data.tenant.mainColor }}
+                style={{ backgroundColor: tenant?.mainColor }}
               ></div>
 
               <div
                 className={styles.menuButtonLine}
-                style={{ backgroundColor: data.tenant.mainColor }}
+                style={{ backgroundColor: tenant?.mainColor }}
               ></div>
 
               <div
                 className={styles.menuButtonLine}
-                style={{ backgroundColor: data.tenant.mainColor }}
+                style={{ backgroundColor: tenant?.mainColor }}
               ></div>
             </div>
           </div>
@@ -93,7 +105,7 @@ export default function Home(data: HomeProps) {
 }
 
 interface HomeProps {
-  tenant: getTenantResponse
+  tenant: Tenant;
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
