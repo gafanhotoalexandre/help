@@ -1,14 +1,14 @@
+import { GetServerSideProps } from 'next';
+
 // components
 import { Banner } from '../../components/Banner';
 import { ProductItem } from '../../components/ProductItem';
 import { SearchInput } from '../../components/SearchInput';
-import { useApi } from '../../libs/useApi';
+import { getTenantResponse, useApi } from '../../libs/useApi';
 
 import styles from '../../styles/Home.module.css';
 
-export default function Home() {
-  const api = useApi();
-  const tenant = api.getTenant('b7burger');
+export default function Home(data: HomeProps) {
 
   function handleSearch(searchValue: string) {
     console.log('Você está buscando por...', searchValue);
@@ -25,16 +25,27 @@ export default function Home() {
 
           <div className={styles.headerTopMenu}>
             <div className={styles.menuButton}>
-              <div className={styles.menuButtonLine}></div>
-              <div className={styles.menuButtonLine}></div>
-              <div className={styles.menuButtonLine}></div>
+              <div
+                className={styles.menuButtonLine}
+                style={{ backgroundColor: data.tenant.mainColor }}
+              ></div>
+
+              <div
+                className={styles.menuButtonLine}
+                style={{ backgroundColor: data.tenant.mainColor }}
+              ></div>
+
+              <div
+                className={styles.menuButtonLine}
+                style={{ backgroundColor: data.tenant.mainColor }}
+              ></div>
             </div>
           </div>
         </div>
 
         <div className={styles.headerBottom}>
           <SearchInput
-            mainColor='#fb9400'
+            mainColor={data.tenant.mainColor}
             onSearch={handleSearch}
           />
         </div>
@@ -51,8 +62,8 @@ export default function Home() {
             name: 'Texas Burger',
             price: '25,50'
           }}
-          mainColor='#fb9400'
-          secondColor='#fff9f2'
+          mainColor={data.tenant.mainColor}
+          secondColor={data.tenant.secondColor}
         />
         <ProductItem
           data={{
@@ -62,8 +73,8 @@ export default function Home() {
             name: 'Texas Burger',
             price: '25,50'
           }}
-          mainColor='#fb9400'
-          secondColor='#fff9f2'
+          mainColor={data.tenant.mainColor}
+          secondColor={data.tenant.secondColor}
         />
         <ProductItem
           data={{
@@ -73,10 +84,31 @@ export default function Home() {
             name: 'Texas Burger',
             price: '25,50'
           }}
-          mainColor='#fb9400'
-          secondColor='#fff9f2'
+          mainColor={data.tenant.mainColor}
+          secondColor={data.tenant.secondColor}
         />
       </div>
     </div>
   );
+}
+
+interface HomeProps {
+  tenant: getTenantResponse
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { tenant: tenantSlug } = context.query;
+  const api = useApi(); // eslint-disable-line
+
+  // get tenant
+  const tenant = await api.getTenant(tenantSlug as string);
+  if (!tenant) {
+    return { redirect: { destination: '/', permanent: false } }
+  }
+
+  return {
+    props: {
+      tenant
+    }
+  }
 }

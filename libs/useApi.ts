@@ -10,8 +10,8 @@ export const useApi = () => ({
       case 'b7burger':
         return {
           name: 'B7Burger',
-          mainColor: '#FF0000',
-          secondColor: '#00FF00'
+          mainColor: '#fb9400',
+          secondColor: '#fff9f2'
         }
       case 'b7pizza':
         return {
