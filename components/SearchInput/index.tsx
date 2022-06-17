@@ -1,14 +1,18 @@
 import { useState } from 'react';
 
+// contexts
+import { useAppContext } from '../../contexts/AppContext';
+
 import SearchIcon from './searchIcon.svg';
 import styles from './SearchInput.module.css';
 
 interface SearchInputProps {
-  mainColor: string;
   onSearch: (searchValue: string) => void;
 }
 
-export function SearchInput({ mainColor, onSearch }: SearchInputProps) {
+export function SearchInput({ onSearch }: SearchInputProps) {
+  const { tenant } = useAppContext();
+
   const [focused, setFocused] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
@@ -21,13 +25,13 @@ export function SearchInput({ mainColor, onSearch }: SearchInputProps) {
   return (
     <div
       className={styles.container}
-      style={{ borderColor: focused ? mainColor : '#fff' }}
+      style={{ borderColor: focused ? tenant?.mainColor : '#fff' }}
     >
       <div
         className={styles.button}
         onClick={() => onSearch(searchValue)}
       >
-        <SearchIcon color={mainColor} />
+        <SearchIcon color={tenant?.mainColor} />
       </div>
 
       <input

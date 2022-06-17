@@ -1,22 +1,26 @@
 // types
 import Link from 'next/link';
+
+// contexts
+import { useAppContext } from '../../contexts/AppContext';
+
+// types
 import { Product } from '../../types/Product';
 
 import styles from './ProductItem.module.css';
 
 interface ProductItemProps {
   data: Product;
-  mainColor: string;
-  secondColor: string;
 }
 
-export function ProductItem({ data, mainColor, secondColor }: ProductItemProps) {
+export function ProductItem({ data }: ProductItemProps) {
+  const { tenant } = useAppContext();
   return (
-    <Link href={`/b7burger/product/${data.id}`}>
+    <Link href={`/${tenant?.slug}/product/${data.id}`}>
       <a className={styles.container}>
         <div
           className={styles.head}
-          style={{ backgroundColor: secondColor }}
+          style={{ backgroundColor: tenant?.secondColor }}
         ></div>
 
         <div className={styles.info}>
@@ -28,7 +32,7 @@ export function ProductItem({ data, mainColor, secondColor }: ProductItemProps) 
           <div className={styles.productName}>{data.name}</div>
           <div
             className={styles.productPrice}
-            style={{ color: mainColor }}
+            style={{ color: tenant?.mainColor }}
           >R${data.price}</div>
         </div>
       </a>

@@ -55,11 +55,9 @@ export default function Home(data: HomeProps) {
           </div>
         </div>
 
+        {/* Busca */}
         <div className={styles.headerBottom}>
-          <SearchInput
-            mainColor={data.tenant.mainColor}
-            onSearch={handleSearch}
-          />
+          <SearchInput onSearch={handleSearch} />
         </div>
       </header>
 
@@ -74,8 +72,6 @@ export default function Home(data: HomeProps) {
             name: 'Texas Burger',
             price: '25,50'
           }}
-          mainColor={data.tenant.mainColor}
-          secondColor={data.tenant.secondColor}
         />
         <ProductItem
           data={{
@@ -85,8 +81,6 @@ export default function Home(data: HomeProps) {
             name: 'Texas Burger',
             price: '25,50'
           }}
-          mainColor={data.tenant.mainColor}
-          secondColor={data.tenant.secondColor}
         />
         <ProductItem
           data={{
@@ -96,8 +90,6 @@ export default function Home(data: HomeProps) {
             name: 'Texas Burger',
             price: '25,50'
           }}
-          mainColor={data.tenant.mainColor}
-          secondColor={data.tenant.secondColor}
         />
       </div>
     </div>
